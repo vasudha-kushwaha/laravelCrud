@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Student extends Controller
 {
-    use cangraTrait;
+    // use cangraTrait;
     /**
      * Display a listing of the resource.
      */

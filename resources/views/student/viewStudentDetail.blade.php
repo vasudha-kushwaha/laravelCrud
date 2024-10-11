@@ -103,7 +103,7 @@
         {"column": "JD", "value": `{{$id_jd}}`},
     ];
     var arrDataDetailInfo2 = [
-        {"column": "Blog", "value": `{{$idd_blog}}`},
+        {"column": "Blog", "value": `{!! $idd_blog !!}`},
         {"column": "Jd Match", "value": `{{$fJdMatch}}`},
         {"column": "Iv Time", "value": `{{$tdtIvTime}}`},
         {"column": "Mobile poc", "value": `{{$jsonMobile_poc}}`},

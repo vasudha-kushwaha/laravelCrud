@@ -91,23 +91,15 @@
         @for ($i=0, $cardsInRow=0; $i < $arrayObjectsCount; $i++)
             @php
                 $id = $arrayObjects[$i]->id;
-                $sTokenDetail = $arrayObjects[$i]->sTokenDetail;
+                $sTokenDetails = $arrayObjects[$i]->sTokenDetails;
+                $sTokenEdit = $arrayObjects[$i]->sTokenEdit;
+
                 $sTitle = $arrayObjects[$i]->sName;
                 $edStatus = $listEnumValues['student']['edStatus'][$arrayObjects[$i]->edStatus];
                 $erType = $listEnumValues['student']['erType'][$arrayObjects[$i]->erType];
                 $id_jd = $arrayObjects[$i]->id_jd;
                 $sButtons = "";
             @endphp
-
-            @if ($isDetail)
-                @php
-                    $sLinkDetailsModal = "student.php?act=detail";
-                    $sTokenDetailAndId = $sTokenDetail.''.$id;
-                    $sButtons = "<a class='mr-1' href="{{route('detailStudent', ['id' => {{$sTokenDetailAndId}}])}}"><span class='fa fa-external-link'></span> Detail</a>
-                    <a class='mr-1 text-warning'><span class='fa fa-pencil'></span> Edit</a>";
-                @endphp
-            @endif
-
 
             @if ($listView == 'card')
                 <!-- Start row at every first card -->
@@ -118,7 +110,27 @@
             <div class="card m-1 shadow bg-white rounded-lg col-md-{$cardWidthInGrid}">
                 <div class="card-body">
                     <div class="card-title">
-                        <span class="fas fa-bookmark fa-lg">&emsp;</span><b>{{$sTitle}}</b><span class="float-right text-nowrap">{!! $sButtons !!}</span>
+                        <span class="fas fa-bookmark fa-lg">&emsp;</span><b>{{$sTitle}}</b>
+                        
+                        <span class="float-right text-nowrap">
+
+                        @if ($isDetail == true)
+                            @php 
+                                $sTokenDetailAndId = $sTokenDetails.$id;
+                                $id = $id;
+                            @endphp
+                            <a class='mr-1' href="{{route('detailStudent', ['id' => $sTokenDetailAndId])}}"><span class='fa fa-external-link'></span> Detail</a>
+                        @endif
+
+                        @if ($isEdit == true)
+                            @php  
+                                $sTokenEditAndId = $sTokenEdit.$id;
+                                $id = $id;
+                            @endphp
+                            <a class='mr-1' href="{{route('editStudent', ['id' => $sTokenEditAndId])}}"><span class='fa fa-pencil'></span> Edit</a>
+                        @endif
+
+                        </span>
                     </div>
                     <div class="card-text">
                         <div class="row my-2"><div class="col-3 small-heading">Status</div><div class="col-9" style="white-space: pre-wrap">{{$edStatus}}</div></div>
@@ -138,7 +150,27 @@
             @elseif ($listView == 'table') 
                 <!-- table view -->
                 @php $idx = $i+1; @endphp
-        <tr><td><span class="text-nowrap">{!! $sButtons !!}</span></td><td>{{$arrayObjects[$i]->id}}- <b>{{$sTitle}}</b></td><td>{{$edStatus}}</td><td>{{$erType}}</td><td>{{$id_jd}}</td></tr>
+        <tr>
+            <td>
+                <span class="text-nowrap">
+                    @if ($isDetail == true)
+                        @php 
+                            $sTokenDetailAndId = $sTokenDetails.$id;
+                            $id = $id;
+                        @endphp
+                        <a class='mr-1' href="{{route('detailStudent', ['id' => $sTokenDetailAndId])}}"><span class='fa fa-external-link'></span> Detail</a>
+                    @endif
+
+                    @if ($isEdit == true)
+                        @php  
+                            $sTokenEditAndId = $sTokenEdit.$id;
+                            $id = $id;
+                        @endphp
+                        <a class='mr-1' href="{{route('editStudent', ['id' => $sTokenEditAndId])}}"><span class='fa fa-pencil'></span> Edit</a>
+                    @endif           
+                </span>
+            </td>
+        <td>{{$arrayObjects[$i]->id}}- <b>{{$sTitle}}</b></td><td>{{$edStatus}}</td><td>{{$erType}}</td><td>{{$id_jd}}</td></tr>
 
             @else 
             <!-- list view -->   
