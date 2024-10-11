@@ -1,0 +1,32 @@
+CREATE TABLE IF NOT EXISTS `student` (
+    `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `tLastUpdate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `tCreationTime` datetime DEFAULT CURRENT_TIMESTAMP,
+    `sTokenEdit` char(16) NOT NULL DEFAULT 'a7j2k9l4b84h5k8s',
+    `sTokenDetails` char(16) NOT NULL DEFAULT 'p2n3m4k7b5l2n4l5',
+    `sIdx` char(16) NOT NULL DEFAULT '28sn5j94lv49s2k8',
+    `iaEntryStatus` tinyint DEFAULT 0, /*   enum(0:NEW, 1:CANCELLED, 2:'DELETED')*/
+    `edStatus` tinyint NULL DEFAULT NULL,
+    `tdLeaveStartDate` date NULL DEFAULT NULL,
+    `sName` varchar(250) DEFAULT NULL,
+    `sEmail` varchar(250) DEFAULT NULL,
+    `erType` tinyint NOT NULL,
+    `iAmount` int(10) DEFAULT 0, 
+    `sdlZone` varchar(250) DEFAULT NULL,
+    `sAddress` varchar(250) DEFAULT NULL,
+    `fileAttachment` varchar(250) DEFAULT NULL,
+    `picScreenshot` varchar(250) DEFAULT NULL,
+    `xdActivityType` tinyint(3) UNSIGNED DEFAULT NULL,
+    `id_jd` int(10) UNSIGNED NULL,
+    `idd_blog` smallint(6) UNSIGNED DEFAULT NULL,
+    `fJdMatch` FLOAT NULL DEFAULT NULL,
+    `tdtIvTime` datetime DEFAULT NULL,
+    `jsonMobile_poc` VARCHAR(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+    `add_faq` varchar(250) DEFAULT NULL,
+    `xcCalling` int(10) DEFAULT 0,
+    `xrIs_GiveResult` tinyint(4) DEFAULT 1,
+    `mdd_subject` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
+    `mcLevels` tinyint(4) DEFAULT 0, /* Junior, Mid, Senior, Executive */
+    `xrIvBy` tinyint DEFAULT 1,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
