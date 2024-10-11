@@ -12,6 +12,7 @@ class StudentController extends Controller
     use Functions;
     use dbBasic;
     /*
+    ok
     Display a listing of the resource.
     */
     // public function List(Request $request, $range, $view)
